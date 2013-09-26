@@ -69,6 +69,16 @@ fallback:
   '*.html': '/offline.html'
 ```
 
+### appcache.manifestFile
+
+Output filename. For example:
+
+```coffeescript
+manifestFile: "appcache.appcache"
+```
+
+Default value : `"appcache.appcache"`
+
 ## License
 
 The MIT License (MIT)

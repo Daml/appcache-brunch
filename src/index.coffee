@@ -49,6 +49,7 @@ class Manifest
       network: ['*']
       fallback: {}
       staticRoot: false
+      manifestFile: 'appcache.appcache'
     }
 
     # Merge config
@@ -88,7 +89,7 @@ class Manifest
     else
       root = ''
 
-    fs.writeFileSync pathlib.join(@config.paths.public, 'appcache.appcache'),
+    fs.writeFileSync pathlib.join(@config.paths.public, @options.manifestFile),
     """
       CACHE MANIFEST
       # #{shasum}
