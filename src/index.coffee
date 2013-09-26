@@ -46,6 +46,7 @@ class Manifest
     # Defaults options
     @options = {
       ignore: /[\\/][.]/
+      externalCacheEntries: []
       network: ['*']
       fallback: {}
       staticRoot: false
@@ -102,6 +103,7 @@ class Manifest
 
       CACHE:
       #{("#{root}#{p}" for p in paths).join('\n')}
+      #{@options.externalCacheEntries.join('\n')}
     """
 
 
