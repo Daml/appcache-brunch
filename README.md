@@ -38,13 +38,43 @@ Link to the manifest from each template. For example:
 
 ### appcache.staticRoot
 
-The static media root, such as "/static" or "http://static.example.com".
+Optionnal static media root to prepend to generated cache (aka _explicit_) entries in `CACHE` section.
+Can be a relative (`'assets'`, `'/static'`) or absolute (`'http://static.example.com'`) URI
+path. For example:
+
+```coffescript
+staticRoot: '/static'
+```
+
+result in :
+```
+CACHE:
+/static/app.js
+/static/vendor.js
+...
+```
+
+and
+
+```coffescript
+staticRoot: false
+```
+
+result in :
+```
+CACHE:
+app.js
+vendor.js
+...
+```
+
+Default value : `false` use relative path with no prefix.
 
 ### appcache.ignore
 
-A regular expression specifying paths to omit from the manifest. By default,
-hidden files and files in hidden directories are ignored (the default pattern
-is `/[/][.]/`).
+A regular expression specifying paths to omit from the manifest.
+
+Default value : `/[/][.]/` hidden files and files in hidden directories are ignored.
 
 ### appcache.externalCacheEntries
 
@@ -61,7 +91,7 @@ Default value : `[]`
 
 ### appcache.network
 
-An array of resource URIs which require a network connection. For example:
+An array of resource URIs which require a network connection added to `NETWORK` section. For example:
 
 ```coffeescript
 network: [
@@ -71,9 +101,11 @@ network: [
 ]
 ```
 
+Default value : `["*"]`
+
 ### appcache.fallback
 
-An object mapping resource URIs to fallback URIs. For example:
+An object mapping resource URIs to fallback URIs added to `FALLBACK` section. For example:
 
 ```coffeescript
 fallback:
@@ -81,6 +113,8 @@ fallback:
   'images/large/': 'images/offline.jpg'
   '*.html': '/offline.html'
 ```
+
+Default value : `{}`
 
 ### appcache.manifestFile
 
